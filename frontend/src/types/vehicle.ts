@@ -1,29 +1,26 @@
 export interface Vehicle {
-  id?: string; // UUID gerado pelo Supabase
+  id: string;
+  created_at: string;
+  updated_at: string;
   tenant_id: string;
   plate: string;
   brand: string;
   model: string;
   year_manufacture: number;
   year_model: number;
-  type: 'car' | 'truck' | 'motorcycle' | 'machine'; // Adicionando 'machine'
+  type: string;
   current_km: number;
-  next_maintenance_date?: string | null;
-  document_due_date?: string | null; // Vencimento do documento
-  status: 'active' | 'maintenance' | 'inactive' | 'sold';
-  created_at?: string;
-  // Campos adicionais das funcionalidades que aprovamos
-  fuel_type?: 'gasoline' | 'diesel' | 'ethanol' | 'electric' | 'gas' | 'flex';
-  average_consumption?: number; // km/l ou l/h para máquinas
+  status: string;
+  fuel_type: string;
   chassis?: string;
   renavam?: string;
-  purchase_date?: string | null;
+  next_maintenance_date?: string;
+  document_due_date?: string;
+  purchase_date?: string;
   purchase_price?: number;
+  average_consumption?: number;
+  tire_details?: string;
   notes?: string;
-  // Para controle de pneus (ideia adicional 3)
-  tire_details?: string; // Poderia ser um JSON ou referência a outra tabela
-  // Para TCO (ideia adicional 5)
-  // Outros custos podem ser calculados a partir de manutenções, abastecimentos, etc.
 }
 
 export interface VehicleExpense {

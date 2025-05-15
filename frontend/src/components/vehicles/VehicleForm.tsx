@@ -88,7 +88,7 @@ const VehicleForm: React.FC<VehicleFormProps> = ({ isEditMode = false }) => {
         let response;
         const vehicleDataToSave = {
             ...vehicle,
-            // tenant_id: vehicle.tenant_id || user.user_metadata.tenant_id, // Garanta que o tenant_id está sendo setado
+            tenant_id: user.user_metadata.tenant_id, // Garante que o tenant_id é sempre salvo
             year_manufacture: Number(vehicle.year_manufacture),
             year_model: Number(vehicle.year_model),
             current_km: Number(vehicle.current_km),
