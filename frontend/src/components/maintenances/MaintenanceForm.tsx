@@ -156,7 +156,7 @@ const MaintenanceForm: React.FC<MaintenanceFormProps> = ({ isEditMode = false })
         const tenantId = user.user_metadata?.tenant_id || 'bda52dfb-1543-4718-b3e9-9523919d8e11';
         
         console.log('TenantID a ser usado:', tenantId);
-        
+
         try {
             if (isEditMode && maintenanceId) {
                 // Atualização de manutenção existente

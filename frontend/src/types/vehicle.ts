@@ -6,12 +6,14 @@ export interface Vehicle {
   plate: string;
   brand: string;
   model: string;
+  year: number;
   year_manufacture: number;
   year_model: number;
-  type: string;
-  current_km: number;
+  color: string;
   status: string;
   fuel_type: string;
+  type: 'car' | 'truck' | 'motorcycle';
+  current_km: number;
   chassis?: string;
   renavam?: string;
   next_maintenance_date?: string;
@@ -21,6 +23,8 @@ export interface Vehicle {
   average_consumption?: number;
   tire_details?: string;
   notes?: string;
+  last_maintenance_date?: string;
+  last_supply_date?: string;
 }
 
 export interface VehicleExpense {

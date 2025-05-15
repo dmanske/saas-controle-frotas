@@ -40,10 +40,10 @@ const MaintenancesPage: React.FC = () => {
         try {
             const { data, error } = await supabase
                 .from('vehicles')
-                .select('id, plate, model, created_at, updated_at, tenant_id, brand, year_manufacture, year_model, type, current_km, status, fuel_type')
+                .select('*')
                 .eq('tenant_id', user.user_metadata.tenant_id);
             if (error) throw error;
-            setVehicles(data || []);
+            setVehicles(data as Vehicle[] || []);
         } catch (err: any) {
             console.error('Erro ao buscar veículos:', err);
             // Não definir erro aqui para não sobrescrever o erro de manutenções

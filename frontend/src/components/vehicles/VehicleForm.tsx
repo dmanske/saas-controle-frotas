@@ -4,6 +4,7 @@ import { Box, Button, TextField, Typography, Paper, Grid, MenuItem, CircularProg
 import { supabase } from '../../supabase'; // Ajuste o caminho se necessário
 import { Vehicle } from '../../types/vehicle'; // Ajuste o caminho se necessário
 import { useAuth } from '../../contexts/AuthContext'; // Ajuste o caminho se necessário
+import { fuelTypeOptions, FuelCategoryType } from '../../types/supply';
 
 interface VehicleFormProps {
   isEditMode?: boolean;
@@ -178,13 +179,18 @@ const VehicleForm: React.FC<VehicleFormProps> = ({ isEditMode = false }) => {
             </TextField>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <TextField select name="fuel_type" label="Tipo Combustível" value={vehicle.fuel_type || 'flex'} onChange={handleChange} fullWidth>
-              <MenuItem value="gasoline">Gasolina</MenuItem>
-              <MenuItem value="diesel">Diesel</MenuItem>
-              <MenuItem value="ethanol">Etanol</MenuItem>
-              <MenuItem value="electric">Elétrico</MenuItem>
-              <MenuItem value="gas">Gás (GNV)</MenuItem>
-              <MenuItem value="flex">Flex</MenuItem>
+            <TextField
+                select
+                name="fuel_type"
+                label="Tipo Combustível"
+                value={vehicle.fuel_type as FuelCategoryType || ''}
+                onChange={handleChange}
+                required
+                fullWidth
+            >
+                {fuelTypeOptions.map(option => (
+                    <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
+                ))}
             </TextField>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>

@@ -8,14 +8,18 @@ import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 import VehiclesPage from './pages/VehiclesPage';
 import VehicleForm from './components/vehicles/VehicleForm';
-import MaintenancesPage from './pages/MaintenancesPage'; // Importar MaintenancesPage
-import MaintenanceForm from './components/maintenances/MaintenanceForm'; // Importar MaintenanceForm
-import MaintenanceDetailPage from './pages/MaintenanceDetailPage'; // Importar MaintenanceDetailPage
+import VehicleDetailPage from './pages/VehicleDetailPage'; // Importar VehicleDetailPage
+import MaintenancesPage from './pages/MaintenancesPage';
+import MaintenanceForm from './components/maintenances/MaintenanceForm';
+import MaintenanceDetailPage from './pages/MaintenanceDetailPage';
+import SuppliesPage from './pages/SuppliesPage'; // Importar SuppliesPage
+import SupplyForm from './components/supplies/SupplyForm'; // Importar SupplyForm
+import SupplyDetailPage from './pages/SupplyDetailPage'; // Importar SupplyDetailPage
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 import CssBaseline from '@mui/material/CssBaseline';
 
-// Placeholder para páginas futuras (pode ser mantido ou removido conforme necessário)
+// Placeholder para páginas futuras
 const PlaceholderPage: React.FC<{ title: string }> = ({ title }) => (
   <div>
     <h2>{title}</h2>
@@ -40,15 +44,21 @@ const App: React.FC = () => {
               <Route path="vehicles" element={<MainLayout><VehiclesPage /></MainLayout>} />
               <Route path="vehicles/new" element={<MainLayout><VehicleForm /></MainLayout>} />
               <Route path="vehicles/edit/:id" element={<MainLayout><VehicleForm isEditMode={true} /></MainLayout>} />
+              <Route path="vehicles/view/:id" element={<MainLayout><VehicleDetailPage /></MainLayout>} /> {/* Rota para Detalhes do Veículo */}
 
               {/* Rotas para Manutenções */}
               <Route path="maintenances" element={<MainLayout><MaintenancesPage /></MainLayout>} />
               <Route path="maintenances/new" element={<MainLayout><MaintenanceForm /></MainLayout>} />
               <Route path="maintenances/edit/:id" element={<MainLayout><MaintenanceForm isEditMode={true} /></MainLayout>} />
               <Route path="maintenances/view/:id" element={<MainLayout><MaintenanceDetailPage /></MainLayout>} />
+
+              {/* Rotas para Abastecimentos */}
+              <Route path="supplies" element={<MainLayout><SuppliesPage /></MainLayout>} />
+              <Route path="supplies/new" element={<MainLayout><SupplyForm /></MainLayout>} />
+              <Route path="supplies/edit/:id" element={<MainLayout><SupplyForm isEditMode={true} /></MainLayout>} />
+              <Route path="supplies/view/:id" element={<MainLayout><SupplyDetailPage /></MainLayout>} />
               
-              {/* Rotas com Placeholder ainda usando MainLayout para consistência */}
-              <Route path="supplies" element={<MainLayout><PlaceholderPage title="Gestão de Abastecimento" /></MainLayout>} />
+              {/* Rotas com Placeholder */}
               <Route path="expenses" element={<MainLayout><PlaceholderPage title="Controle de Despesas" /></MainLayout>} />
               <Route path="drivers" element={<MainLayout><PlaceholderPage title="Gestão de Motoristas" /></MainLayout>} />
               <Route path="documents" element={<MainLayout><PlaceholderPage title="Gerenciamento de Documentos" /></MainLayout>} />

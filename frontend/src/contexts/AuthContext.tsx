@@ -25,13 +25,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   useEffect(() => {
     const getSession = async () => {
       try {
-        const { data: { session: currentSession } } = await supabase.auth.getSession();
-        setSession(currentSession);
-        setUser(currentSession?.user ?? null);
+      const { data: { session: currentSession } } = await supabase.auth.getSession();
+      setSession(currentSession);
+      setUser(currentSession?.user ?? null);
       } catch (error) {
         console.error('Erro ao obter sessão:', error);
       } finally {
-        setLoading(false);
+      setLoading(false);
       }
     };
 
@@ -52,10 +52,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const signInWithPassword = async (email_param: string, password_param: string) => {
     setLoading(true);
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: email_param,
-        password: password_param,
-      });
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email_param,
+      password: password_param,
+    });
       if (error) throw error;
       return data;
     } catch (error) {
@@ -68,15 +68,15 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const signUpWithPassword = async (email_param: string, password_param: string, fullName_param: string) => {
     setLoading(true);
     try {
-      const { data, error } = await supabase.auth.signUp({
-        email: email_param,
-        password: password_param,
-        options: {
-          data: {
-            full_name: fullName_param,
-          },
+    const { data, error } = await supabase.auth.signUp({
+      email: email_param,
+      password: password_param,
+      options: {
+        data: {
+          full_name: fullName_param,
         },
-      });
+      },
+    });
       if (error) throw error;
       return data;
     } catch (error) {
@@ -89,13 +89,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const signOut = async () => {
     setLoading(true);
     try {
-      await supabase.auth.signOut();
-      setUser(null);
-      setSession(null);
+    await supabase.auth.signOut();
+    setUser(null);
+    setSession(null);
     } catch (error) {
       console.error('Erro ao fazer logout:', error);
     } finally {
-      setLoading(false);
+    setLoading(false);
     }
   };
 
