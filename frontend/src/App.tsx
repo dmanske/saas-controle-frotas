@@ -15,14 +15,20 @@ import MaintenanceDetailPage from './pages/MaintenanceDetailPage';
 import SuppliesPage from './pages/SuppliesPage';
 import SupplyForm from './components/supplies/SupplyForm';
 import SupplyDetailPage from './pages/SupplyDetailPage';
-import DriversPage from './pages/DriversPage'; // Importar DriversPage
-import DriverForm from './components/drivers/DriverForm'; // Importar DriverForm
-import DriverDetailPage from './pages/DriverDetailPage'; // Importar DriverDetailPage
+import DriversPage from './pages/DriversPage';
+import DriverForm from './components/drivers/DriverForm';
+import DriverDetailPage from './pages/DriverDetailPage';
+
+// Imports for Documents module
+import DocumentsPage from './pages/DocumentsPage';
+import DocumentForm from './components/documents/DocumentForm';
+import DocumentDetailPage from './pages/DocumentDetailPage';
+
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 import CssBaseline from '@mui/material/CssBaseline';
 
-// Placeholder para páginas futuras
+// Placeholder for pages futuras
 const PlaceholderPage: React.FC<{ title: string }> = ({ title }) => (
   <div>
     <h2>{title}</h2>
@@ -66,10 +72,15 @@ const App: React.FC = () => {
               <Route path="drivers/new" element={<MainLayout><DriverForm /></MainLayout>} />
               <Route path="drivers/edit/:id" element={<MainLayout><DriverForm isEditMode={true} /></MainLayout>} />
               <Route path="drivers/view/:id" element={<MainLayout><DriverDetailPage /></MainLayout>} />
+
+              {/* Rotas para Documentos */}
+              <Route path="documents" element={<MainLayout><DocumentsPage /></MainLayout>} />
+              <Route path="documents/new" element={<MainLayout><DocumentForm /></MainLayout>} />
+              <Route path="documents/edit/:id" element={<MainLayout><DocumentForm isEditMode={true} /></MainLayout>} />
+              <Route path="documents/view/:id" element={<MainLayout><DocumentDetailPage /></MainLayout>} />
               
               {/* Rotas com Placeholder */}
               <Route path="expenses" element={<MainLayout><PlaceholderPage title="Controle de Despesas" /></MainLayout>} />
-              <Route path="documents" element={<MainLayout><PlaceholderPage title="Gerenciamento de Documentos" /></MainLayout>} />
               <Route path="tires" element={<MainLayout><PlaceholderPage title="Controle de Pneus" /></MainLayout>} />
               <Route path="checklists" element={<MainLayout><PlaceholderPage title="Checklists de Veículos" /></MainLayout>} />
               <Route path="reports" element={<MainLayout><PlaceholderPage title="Relatórios Gerenciais" /></MainLayout>} />

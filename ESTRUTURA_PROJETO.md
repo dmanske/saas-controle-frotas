@@ -132,3 +132,28 @@ import { useAuth } from '../contexts/AuthContext'
 3. Manter a consistência na estrutura de pastas
 4. Documentar componentes e funções complexas
 5. Seguir as convenções de código estabelecidas 
+
+## Exemplo de Uso
+
+### Para buscar documentos de veículos
+```typescript
+const { data: vehicleDocuments } = await supabase
+  .from('vehicle_documents')
+  .select('*')
+  .eq('entity_id', vehicleId);
+```
+
+### Para buscar documentos de motoristas
+```typescript
+const { data: driverDocuments } = await supabase
+  .from('driver_documents')
+  .select('*')
+  .eq('entity_id', driverId);
+```
+
+### Para buscar todos os documentos
+```typescript
+const { data: allDocuments } = await supabase
+  .from('documents')
+  .select('*');
+``` 
