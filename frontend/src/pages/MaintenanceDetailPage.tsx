@@ -119,7 +119,7 @@ const MaintenanceDetailPage: React.FC = () => {
     if (!maintenance) return <Alert severity="info">Detalhes da manutenção não disponíveis.</Alert>;
 
     return (
-        <Paper sx={{ p: 3, margin: 'auto', overflow: 'hidden' }}>
+        <Paper sx={{ p: 3, margin: 'auto', overflow: 'hidden', maxWidth: 1400 }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
                 <Typography variant="h4" component="div">
                     Detalhes da Manutenção

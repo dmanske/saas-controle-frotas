@@ -180,7 +180,6 @@ const DriversPage: React.FC = () => {
                     Novo Motorista
                 </Button>
             </Box>
-
             <Box sx={{ mb: 3, p: 2, border: '1px solid #ddd', borderRadius: '8px', bgcolor: 'grey.50' }}>
                 <Grid container spacing={2} alignItems="center">
                     <Grid item xs={12} sm={6} md={3}>

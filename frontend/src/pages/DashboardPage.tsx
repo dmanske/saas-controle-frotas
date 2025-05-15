@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Paper, Typography } from '@mui/material';
+import { Grid, Paper, Typography, Box } from '@mui/material';
 
 // Dados mockados para os cards do dashboard, conforme o wireframe
 const dashboardData = {
@@ -28,8 +28,8 @@ const dashboardData = {
 
 const DashboardPage: React.FC = () => {
   return (
-    <div>
-      <Typography variant="h4" gutterBottom>
+    <Paper sx={{ p: 3, margin: 'auto', overflow: 'hidden', maxWidth: 1400 }}>
+      <Typography variant="h4" gutterBottom component="div">
         Dashboard
       </Typography>
       <Grid container spacing={3}>
@@ -86,7 +86,7 @@ const DashboardPage: React.FC = () => {
           </Paper>
         </Grid>
       </Grid>
-    </div>
+    </Paper>
   );
 };
 

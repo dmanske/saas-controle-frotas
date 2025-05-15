@@ -157,62 +157,61 @@ const DriverDetailPage: React.FC = () => {
     if (!driver) return <Alert severity="info">Detalhes do motorista não disponíveis.</Alert>;
 
     return (
-        <Paper sx={{ p: 3, margin: "auto", overflow: "hidden" }}>
-            <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2 }}>
+        <Paper sx={{ p: 4, margin: "auto", overflow: "hidden", maxWidth: 1400 }}>
+            <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 3, flexWrap: 'wrap', gap: 2 }}>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                     {driver.profile_picture_url ? (
                         <Avatar src={driver.profile_picture_url} sx={{ width: 56, height: 56, mr: 2 }} />
                     ) : (
                         <Avatar sx={{ width: 56, height: 56, mr: 2 }}><PersonIcon /></Avatar>
                     )}
-                    <Typography variant="h4" component="div">
+                    <Typography variant="h4" sx={{ color: 'primary.main', fontWeight: 'bold' }} component="div">
                         {driver.name}
                     </Typography>
                 </Box>
                 <Box>
-                    <Button variant="outlined" startIcon={<ArrowBackIcon />} onClick={() => navigate("/drivers")} sx={{ mr: 1 }}>
+                    <Button variant="outlined" startIcon={<ArrowBackIcon />} onClick={() => navigate("/drivers")} sx={{ mr: 1, fontWeight: 'bold', px: 3, py: 1 }}>
                         Voltar
                     </Button>
-                    <Button variant="contained" startIcon={<EditIcon />} component={RouterLink} to={`/drivers/edit/${driver.id}`}>
+                    <Button variant="contained" startIcon={<EditIcon />} component={RouterLink} to={`/drivers/edit/${driver.id}`} sx={{ fontWeight: 'bold', px: 3, py: 1 }}>
                         Editar Motorista
                     </Button>
                 </Box>
             </Box>
             <Divider sx={{ mb: 3 }} />
-
             <Grid container spacing={3}>
-                <Grid item xs={12}><Chip label="Dados Pessoais" sx={{ fontWeight: "bold" }} /></Grid>
+                <Grid item xs={12}><Chip label="Dados Pessoais" sx={{ fontWeight: "bold", bgcolor: 'grey.50', px: 2, py: 1, fontSize: 16 }} /></Grid>
                 <DetailItem label="Nome Completo" value={driver.name} />
                 <DetailItem label="CPF" value={driver.cpf} />
                 <DetailItem label="Data de Nascimento" value={new Date(driver.birth_date + "T00:00:00").toLocaleDateString("pt-BR")} />
                 <DetailItem label="Telefone Principal" value={driver.phone} />
                 <DetailItem label="E-mail" value={driver.email} />
                 
-                <Grid item xs={12}><Divider sx={{ my: 1 }}><Chip label="Documentação (CNH)" sx={{ fontWeight: "bold" }} /></Divider></Grid>
+                <Grid item xs={12}><Divider sx={{ my: 1 }}><Chip label="Documentação (CNH)" sx={{ fontWeight: "bold", bgcolor: 'grey.50', px: 2, py: 1, fontSize: 16 }} /></Divider></Grid>
                 <DetailItem label="Número da CNH" value={driver.cnh_number} />
                 <DetailItem label="Categoria CNH" value={driver.cnh_category} />
                 <DetailItem label="Validade da CNH" value={new Date(driver.cnh_expiration_date + "T00:00:00").toLocaleDateString("pt-BR")} />
 
-                <Grid item xs={12}><Divider sx={{ my: 1 }}><Chip label="Informações Contratuais" sx={{ fontWeight: "bold" }} /></Divider></Grid>
+                <Grid item xs={12}><Divider sx={{ my: 1 }}><Chip label="Informações Contratuais" sx={{ fontWeight: "bold", bgcolor: 'grey.50', px: 2, py: 1, fontSize: 16 }} /></Divider></Grid>
                 <DetailItem label="Data de Admissão" value={new Date(driver.admission_date + "T00:00:00").toLocaleDateString("pt-BR")} />
                 <DetailItem label="Status" value={<Chip label={driver.status.charAt(0).toUpperCase() + driver.status.slice(1)} color={driver.status === "ativo" ? "success" : driver.status === "inativo" || driver.status === "desligado" ? "error" : "default"} />} />
 
-                <Grid item xs={12}><Divider sx={{ my: 1 }}><Chip label="Endereço" sx={{ fontWeight: "bold" }} /></Divider></Grid>
+                <Grid item xs={12}><Divider sx={{ my: 1 }}><Chip label="Endereço" sx={{ fontWeight: "bold", bgcolor: 'grey.50', px: 2, py: 1, fontSize: 16 }} /></Divider></Grid>
                 <Grid item xs={12}>
                     <AddressDisplay address={driver.address} />
                 </Grid>
 
-                <Grid item xs={12}><Divider sx={{ my: 1 }}><Chip label="Contato de Emergência" sx={{ fontWeight: "bold" }} /></Divider></Grid>
+                <Grid item xs={12}><Divider sx={{ my: 1 }}><Chip label="Contato de Emergência" sx={{ fontWeight: "bold", bgcolor: 'grey.50', px: 2, py: 1, fontSize: 16 }} /></Divider></Grid>
                 <DetailItem label="Nome do Contato de Emergência" value={driver.emergency_contact_name} />
                 <DetailItem label="Telefone do Contato de Emergência" value={driver.emergency_contact_phone} />
                 
-                <Grid item xs={12}><Divider sx={{ my: 1 }}><Chip label="Observações" sx={{ fontWeight: "bold" }} /></Divider></Grid>
+                <Grid item xs={12}><Divider sx={{ my: 1 }}><Chip label="Observações" sx={{ fontWeight: "bold", bgcolor: 'grey.50', px: 2, py: 1, fontSize: 16 }} /></Divider></Grid>
                 <Grid item xs={12}>
                     <Typography variant="body1" sx={{ whiteSpace: "pre-wrap" }}>{driver.notes || "Nenhuma nota adicional."}</Typography>
                 </Grid>
 
                 {/* Seção de Documentos do Motorista */} 
-                <Grid item xs={12}><Divider sx={{ my: 2 }}><Chip label="Documentos Recentes do Motorista" sx={{ fontWeight: "bold" }} /></Divider></Grid>
+                <Grid item xs={12}><Divider sx={{ my: 2 }}><Chip label="Documentos Recentes do Motorista" sx={{ fontWeight: "bold", bgcolor: 'grey.50', px: 2, py: 1, fontSize: 16 }} /></Divider></Grid>
                 <Grid item xs={12}>
                     {docError && <Alert severity="warning" sx={{mb:1}}>{docError}</Alert>}
                     <Button 

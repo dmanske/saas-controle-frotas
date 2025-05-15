@@ -224,10 +224,9 @@ const DocumentsPage: React.FC = () => {
     if (loading && documents.length === 0) return <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}><CircularProgress /></Box>;
 
     return (
-        <Paper sx={{ p: 3, margin: 'auto', overflow: 'hidden' }}>
+        <Paper sx={{ p: 3, margin: 'auto', overflow: 'hidden', maxWidth: 1400 }}>
             <Typography variant="h4" gutterBottom component="div">Gerenciamento de Documentos</Typography>
-
-            <Box sx={{ mb: 2, p: 2, border: '1px solid #ddd', borderRadius: '4px' }}>
+            <Box sx={{ mb: 2, p: 2, border: '1px solid #ddd', borderRadius: '4px', bgcolor: 'grey.50' }}>
                 <Typography variant="h6" gutterBottom>Filtros</Typography>
                 <Grid container spacing={2} alignItems="flex-end">
                     <Grid item xs={12} sm={6} md={3}>
@@ -273,17 +272,12 @@ const DocumentsPage: React.FC = () => {
                     </Grid>
                 </Grid>
             </Box>
-
             {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
-
             <Button variant="contained" color="primary" startIcon={<AddIcon />} component={RouterLink} to="/documents/new" sx={{ mb: 2 }}>Adicionar Novo Documento</Button>
-
-            {loading && documents.length > 0 && <CircularProgress sx={{ display: 'block', margin: '20px auto' }}/>}
-            
             {documents.length === 0 && !loading ? (
                 <Alert severity="info">Nenhum documento encontrado.</Alert>
             ) : (
-                <TableContainer component={Paper} elevation={3}>
+                <TableContainer component={Paper} elevation={3} sx={{ mb: 2 }}>
                     <Table sx={{ minWidth: 650 }} aria-label="tabela de documentos">
                         <TableHead>
                             <TableRow>
