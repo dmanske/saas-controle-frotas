@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
-import { Box, CssBaseline } from '@mui/material';
-import Header from './Header'; // Ajuste o caminho se necessário
-import Sidebar from './Sidebar'; // Ajuste o caminho se necessário
+import { Box, CssBaseline, useTheme } from '@mui/material'; // Importar useTheme
+import Header from './Header';
+import Sidebar from './Sidebar';
 
 const drawerWidth = 240;
 
@@ -10,16 +10,12 @@ interface MainLayoutProps {
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
-  // const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  // const handleDrawerToggle = () => {
-  //   setMobileOpen(!mobileOpen);
-  // };
+  const theme = useTheme(); // Acessar o tema
 
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <Header /> {/* handleDrawerToggle={handleDrawerToggle} - Adicionar se for implementar menu mobile */}
+      <Header />
       <Sidebar />
       <Box
         component="main"
@@ -28,7 +24,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           mt: '64px', // Altura padrão da AppBar do MUI
-          backgroundColor: '#f4f6f8', // Um cinza claro para o fundo do conteúdo
+          backgroundColor: theme.palette.background.default, // Usar a cor de fundo do tema
           minHeight: 'calc(100vh - 64px)',
         }}
       >
