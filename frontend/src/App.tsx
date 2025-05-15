@@ -8,13 +8,16 @@ import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 import VehiclesPage from './pages/VehiclesPage';
 import VehicleForm from './components/vehicles/VehicleForm';
-import VehicleDetailPage from './pages/VehicleDetailPage'; // Importar VehicleDetailPage
+import VehicleDetailPage from './pages/VehicleDetailPage';
 import MaintenancesPage from './pages/MaintenancesPage';
 import MaintenanceForm from './components/maintenances/MaintenanceForm';
 import MaintenanceDetailPage from './pages/MaintenanceDetailPage';
-import SuppliesPage from './pages/SuppliesPage'; // Importar SuppliesPage
-import SupplyForm from './components/supplies/SupplyForm'; // Importar SupplyForm
-import SupplyDetailPage from './pages/SupplyDetailPage'; // Importar SupplyDetailPage
+import SuppliesPage from './pages/SuppliesPage';
+import SupplyForm from './components/supplies/SupplyForm';
+import SupplyDetailPage from './pages/SupplyDetailPage';
+import DriversPage from './pages/DriversPage'; // Importar DriversPage
+import DriverForm from './components/drivers/DriverForm'; // Importar DriverForm
+import DriverDetailPage from './pages/DriverDetailPage'; // Importar DriverDetailPage
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -44,7 +47,7 @@ const App: React.FC = () => {
               <Route path="vehicles" element={<MainLayout><VehiclesPage /></MainLayout>} />
               <Route path="vehicles/new" element={<MainLayout><VehicleForm /></MainLayout>} />
               <Route path="vehicles/edit/:id" element={<MainLayout><VehicleForm isEditMode={true} /></MainLayout>} />
-              <Route path="vehicles/view/:id" element={<MainLayout><VehicleDetailPage /></MainLayout>} /> {/* Rota para Detalhes do Veículo */}
+              <Route path="vehicles/view/:id" element={<MainLayout><VehicleDetailPage /></MainLayout>} />
 
               {/* Rotas para Manutenções */}
               <Route path="maintenances" element={<MainLayout><MaintenancesPage /></MainLayout>} />
@@ -57,10 +60,15 @@ const App: React.FC = () => {
               <Route path="supplies/new" element={<MainLayout><SupplyForm /></MainLayout>} />
               <Route path="supplies/edit/:id" element={<MainLayout><SupplyForm isEditMode={true} /></MainLayout>} />
               <Route path="supplies/view/:id" element={<MainLayout><SupplyDetailPage /></MainLayout>} />
+
+              {/* Rotas para Motoristas */}
+              <Route path="drivers" element={<MainLayout><DriversPage /></MainLayout>} />
+              <Route path="drivers/new" element={<MainLayout><DriverForm /></MainLayout>} />
+              <Route path="drivers/edit/:id" element={<MainLayout><DriverForm isEditMode={true} /></MainLayout>} />
+              <Route path="drivers/view/:id" element={<MainLayout><DriverDetailPage /></MainLayout>} />
               
               {/* Rotas com Placeholder */}
               <Route path="expenses" element={<MainLayout><PlaceholderPage title="Controle de Despesas" /></MainLayout>} />
-              <Route path="drivers" element={<MainLayout><PlaceholderPage title="Gestão de Motoristas" /></MainLayout>} />
               <Route path="documents" element={<MainLayout><PlaceholderPage title="Gerenciamento de Documentos" /></MainLayout>} />
               <Route path="tires" element={<MainLayout><PlaceholderPage title="Controle de Pneus" /></MainLayout>} />
               <Route path="checklists" element={<MainLayout><PlaceholderPage title="Checklists de Veículos" /></MainLayout>} />
